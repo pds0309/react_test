@@ -29,3 +29,17 @@ test("button initial checkbox test", () => {
   const checkBox = screen.getByRole("checkbox");
   expect(checkBox).not.toBeChecked();
 });
+
+test("button should be disalbed when checkbox checked and able whne not checked", () => {
+  render(<App />);
+  const checkBox = screen.getByRole("checkbox");
+  const button = screen.getByRole("button");
+  fireEvent.click(checkBox);
+  // checkbox should be checked when clicked
+  expect(checkBox).toBeChecked();
+  expect(button).toBeDisabled();
+
+  fireEvent.click(checkBox);
+  expect(checkBox).not.toBeChecked();
+  expect(button).toBeEnabled();
+});

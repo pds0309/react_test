@@ -1,7 +1,11 @@
 import "./App.css";
 
 function App() {
-  return <div></div>;
+  return (
+    <div>
+      <button style={{ backgroundColor: "red" }}>Change to Blue</button>
+    </div>
+  );
 }
 
 export default App;

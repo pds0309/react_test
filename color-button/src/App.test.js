@@ -19,3 +19,13 @@ test("button component functional test", () => {
   // expect text to be changed
   expect(button.textContent).toBe("Change to red");
 });
+
+test("button initial checkbox test", () => {
+  render(<App />);
+  const button = screen.getByRole("button", { name: "Change to blue" });
+  // button should be enabled by default
+  expect(button).toBeEnabled();
+  // button should be not checked by default
+  const checkBox = screen.getByRole("checkbox");
+  expect(checkBox).not.toBeChecked();
+});

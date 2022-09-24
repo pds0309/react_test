@@ -16,7 +16,7 @@ test("scoops 옵션 변경으로 scoop 파트 총계가 변경된다", async () 
     name: "Vanilla scoop",
   });
   userEvent.clear(vanillaInput);
-  userEvent.type(vanillaInput, "1");
+  await userEvent.type(vanillaInput, "1");
   expect(scoopSubTotals).toHaveTextContent("2.00");
 
   // 초콜렛 scoop 상태가 2인 상황에서 업데이트를 테스트한다.
@@ -24,6 +24,30 @@ test("scoops 옵션 변경으로 scoop 파트 총계가 변경된다", async () 
     name: "Chocolate scoop",
   });
   userEvent.clear(chocolateInput);
-  userEvent.type(chocolateInput, "2");
-  expect(scoopSubTotals).toHaveTextContent("4.00");
+  await userEvent.type(chocolateInput, "2");
+  expect(scoopSubTotals).toHaveTextContent("6.00");
+});
+
+test("toppings 옵션 체크여부로 topping 파트 총계가 변경된다.", async () => {
+  render(<Options optionType="toppings" />);
+
+  const toppingsTotal = screen.getByText("Toppings Total: $", {
+    exact: false,
+  });
+  expect(toppingsTotal).toHaveTextContent("0.00");
+
+  const cherriesCheckbox = await screen.findByRole("checkbox", {
+    name: "Cherries topping",
+  });
+  await userEvent.click(cherriesCheckbox);
+  expect(toppingsTotal).toHaveTextContent("1.50");
+
+  const hotFudgeCheckbox = await screen.findByRole("checkbox", {
+    name: "Hot fudge topping",
+  });
+  await userEvent.click(hotFudgeCheckbox);
+  expect(toppingsTotal).toHaveTextContent("3.00");
+
+  await userEvent.click(hotFudgeCheckbox);
+  expect(toppingsTotal).toHaveTextContent("1.50");
 });

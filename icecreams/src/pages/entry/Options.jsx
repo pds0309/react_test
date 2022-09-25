@@ -5,6 +5,7 @@ import { Row } from "react-bootstrap";
 import ScoopOption from "./ScoopOption";
 import ToppingOption from "./ToppingOption";
 import axios from "axios";
+import { formatCurrency } from "../../utils";
 import { pricePerItem } from "../../constants";
 import { useOrderDetails } from "../../contexts/OrderDetails";
 
@@ -36,7 +37,7 @@ const Options = ({ optionType }) => {
   return (
     <>
       <h2>{title}</h2>
-      <p>{pricePerItem[optionType]} each</p>
+      <p>{formatCurrency(pricePerItem[optionType])} each</p>
       <p>
         {title} Total: {orderDetails.totals[optionType]}
       </p>

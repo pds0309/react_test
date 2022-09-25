@@ -18,7 +18,7 @@ test("Scoop 및 Topping 라우트의 api 호출 장애를 핸들링한다.", asy
       return res(ctx.status(500));
     })
   );
-  render(<OrderEntry />);
+  render(<OrderEntry setPhase={jest.fn()} />);
   await waitFor(async () => {
     const alerts = await screen.findAllByRole("alert");
     expect(alerts).toHaveLength(2);

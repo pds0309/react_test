@@ -38,9 +38,9 @@ const Options = ({ optionType }) => {
     <>
       <h2>{title}</h2>
       <p>{formatCurrency(pricePerItem[optionType])} each</p>
-      <p>
+      <h2>
         {title} Total: {orderDetails.totals[optionType]}
-      </p>
+      </h2>
       <Row>{optionItems}</Row>
     </>
   );

@@ -2,7 +2,7 @@ import { Button, Form, OverlayTrigger, Popover } from "react-bootstrap";
 
 import { useState } from "react";
 
-const SummaryForm = () => {
+const SummaryForm = ({ setPhase }) => {
   const [confirmButtonDisabled, setConfirmButtonDisabled] = useState(true);
 
   const handleConfirmCheckBoxChange = (event) => {
@@ -24,8 +24,13 @@ const SummaryForm = () => {
     </span>
   );
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setPhase("completed");
+  };
+
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <Form.Group controlId="id-confirm-checkbox">
         <Form.Check
           type="checkbox"

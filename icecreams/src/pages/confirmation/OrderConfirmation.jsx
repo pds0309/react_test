@@ -1,4 +1,5 @@
 import { Button } from "react-bootstrap";
+import { LAMBDA_URL } from "../../constants";
 import axios from "axios";
 import { useEffect } from "react";
 import { useOrderDetails } from "../../contexts/OrderDetails";
@@ -10,7 +11,7 @@ const OrderConfirmation = ({ setPhase }) => {
 
   useEffect(() => {
     axios
-      .post(`http://localhost:3030/order`)
+      .post(`${LAMBDA_URL}/order`)
       .then((response) => setOrderNumber(response.data.orderNumber))
       .catch();
   }, []);

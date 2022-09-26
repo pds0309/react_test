@@ -1,3 +1,4 @@
+import { LAMBDA_URL, pricePerItem } from "../../constants";
 import { useEffect, useState } from "react";
 
 import AlertBanner from "../common/AlertBanner";
@@ -6,7 +7,6 @@ import ScoopOption from "./ScoopOption";
 import ToppingOption from "./ToppingOption";
 import axios from "axios";
 import { formatCurrency } from "../../utils";
-import { pricePerItem } from "../../constants";
 import { useOrderDetails } from "../../contexts/OrderDetails";
 
 const Options = ({ optionType }) => {
@@ -15,9 +15,11 @@ const Options = ({ optionType }) => {
   const [orderDetails, updateItemCount] = useOrderDetails();
   useEffect(() => {
     axios
-      .get(`http://localhost:3030/${optionType}`)
+      .get(`${LAMBDA_URL}/${optionType}`)
       .then((response) => setItems(response.data))
-      .catch((error) => setError(true));
+      .catch((error) => {
+        setError(true);
+      });
   }, [optionType]);
   if (error) {
     return <AlertBanner />;

@@ -8,7 +8,7 @@ const OrderEntry = ({ setPhase }) => {
     <div>
       <Options optionType="scoops" />
       <Options optionType="toppings" />
-      <h2>Grand total: ${orderDetails.totals["grandTotal"]}</h2>
+      <h2>Grand total: {orderDetails.totals["grandTotal"]}</h2>
       <Button onClick={() => setPhase("review")}>Order Sundae</Button>
     </div>
   );

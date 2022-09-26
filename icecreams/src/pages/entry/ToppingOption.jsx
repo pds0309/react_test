@@ -13,11 +13,7 @@ const ToppingOption = ({ name, imagePath, updateItemCount }) => {
       style={{ textAlign: "center" }}
       key={name}
     >
-      <img
-        style={{ width: "75%" }}
-        src={`http://localhost:3030/${imagePath}`}
-        alt={name}
-      ></img>
+      <img style={{ width: "75%" }} src={`${imagePath}`} alt={name}></img>
       <Form.Group
         controlId={`${name}-count`}
         as={Row}

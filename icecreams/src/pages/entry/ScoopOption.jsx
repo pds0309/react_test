@@ -5,16 +5,21 @@ import { Row } from "react-bootstrap";
 import { useState } from "react";
 
 const ScoopOption = ({ name, imagePath, updateItemCount }) => {
-  const handleChange = (event) => {
-    const currentInputValue = event.target.value;
-    updateItemCount(name, currentInputValue);
-    setIsValidInput(
-      0 <= currentInputValue &&
-        currentInputValue <= 10 &&
-        parseFloat(currentInputValue) === parseInt(currentInputValue)
-    );
-  };
   const [isValidInput, setIsValidInput] = useState(true);
+  const handleChange = async (event) => {
+    const currentInputValue = event.target.value;
+    const valid =
+      0 <= currentInputValue &&
+      currentInputValue <= 10 &&
+      parseFloat(currentInputValue) === parseInt(currentInputValue);
+    setIsValidInput(valid);
+    if (valid) {
+      updateItemCount(name, currentInputValue);
+    } else {
+      updateItemCount(name, 0);
+    }
+  };
+
   return (
     <Col
       xs={12}

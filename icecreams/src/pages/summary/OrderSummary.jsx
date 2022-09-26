@@ -18,8 +18,13 @@ const OrderSummary = ({ setPhase }) => {
       <h2>Order Summary</h2>
       <h2>Scoops: {orderDetails.totals.scoops}</h2>
       <ul>{scoopList}</ul>
-      <h2>Toppings: {orderDetails.totals.toppings}</h2>
-      <ul>{toppingList}</ul>
+      {orderDetails.toppings.size > 0 && (
+        <>
+          <h2>Toppings: {orderDetails.totals.toppings}</h2>
+          <ul>{toppingList}</ul>
+        </>
+      )}
+
       <SummaryForm setPhase={setPhase} />
     </div>
   );

@@ -74,3 +74,27 @@ test("All Order Phase Happy Path Testing", async () => {
   await screen.findByRole("spinbutton", { name: "Vanilla scoop" });
   await screen.findByRole("checkbox", { name: "Cherries topping" });
 });
+
+test("사용자가 토핑을 선택하지 않으면 요약 페이지에 보여주지 않는다.", async () => {
+  render(<App />);
+  // add icecream scoops and toppings
+  const vanillaInput = await screen.findByRole("spinbutton", {
+    name: "Vanilla scoop",
+  });
+  userEvent.clear(vanillaInput);
+  await userEvent.type(vanillaInput, "1");
+  const orderButton = screen.getByRole("button", {
+    name: /order sundae/i,
+  });
+  expect(orderButton).toBeInTheDocument();
+  userEvent.click(orderButton);
+  // check summary information based on order
+  const summaryHeading = await screen.findByRole("heading", {
+    name: "Order Summary",
+  });
+  expect(summaryHeading).toBeInTheDocument();
+
+  // topping 정보가 없어야 한다.
+  const toppingHeading = screen.queryByRole("heading", { name: /topping/i });
+  expect(toppingHeading).not.toBeInTheDocument();
+});

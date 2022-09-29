@@ -52,14 +52,15 @@ react test
 - MSW(Mock Service Worker) 를 통해 서버 응답을 Mocking 하여 컴포넌트 테스팅 하기
 - 백엔드 서버 에러 응답에 대한 핸들링 해보기
 - `Jest Mock` 으로 컴포넌트 테스팅 시 불필요 프로퍼티 mocking 하기
-- 전체적 앱 흐름 Happy path 테스팅하기
+- 전체적 앱 흐름 Happy path 테스팅하기: testing library, cypress
 
 <br>
 
-
 TODO
 
-- [ ] `cypress` e2e 테스트 해보기
+- [X] `cypress` e2e 테스트 해보기
+
+- [ ] `cypress` 와 `msw` 를 연동해 e2e 테스트 시 api mocking 하기
 
 
 <br>

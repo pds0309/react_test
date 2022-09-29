@@ -176,6 +176,17 @@ console.error
 - [x] 비정상적 `Scoop` 입력이 있다면 소계를 적용하지 않는다.
 - [x] 사용자의 주문요청(`post`)이 실패했을 경우 실패 경고 `alert` 를 보여준다.
 
+<br>
+
+### Cypress E2E 테스트
+
+- [x] E2E 테스트 도구인 Cypress 를 사용해본다.
+
+![image](https://user-images.githubusercontent.com/76927397/193067755-d913071a-653e-4007-9e96-aeb40d3d60cd.png)
+
+- [ ] MSW 와 연동해 Api를 Mocking 하여 E2E 테스트를 진행 해본다
+
+<br>
 ### ref
 
 - [testing library queries](https://testing-library.com/docs/dom-testing-library/api-queries)

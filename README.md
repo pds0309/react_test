@@ -60,13 +60,29 @@ TODO
 
 - [X] `cypress` e2e 테스트 해보기
 
-- [ ] `cypress` 와 `msw` 를 연동해 e2e 테스트 시 api mocking 하기
-
+- [ ] `cypress` 와 `msw` 를 연동해 e2e 테스트 시 api mocking 하기(잘 안되는중)
 
 <br>
 
-### Ref
 
-- [Jest 및 테스팅 라이브러리로 React Test - Udemy](https://www.udemy.com/course/jest-testing-library/)
+### Section3
 
+[readme](/todos/README.md)
+
+**todo 앱 만들기**
+
+- todo 목록을 추가할 수 있다.
+- todo 목록을 볼 수 있다.
+- todo 목록을 제거할 수 있다.
+
+<br>
+
+연습사항
+
+- typescript 사용해 개발
+- storybook 활용해보기
+
+
+
+<br>
 <br>

@@ -1,5 +1,51 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots Atom/Buton Default 1`] = `
+<button
+  className="css-kcsx9f btn"
+  colorType="blue"
+  type="button"
+>
+  hell world
+</button>
+`;
+
+exports[`Storyshots Atom/Buton White Submit 1`] = `
+<button
+  className="css-1mosyqu btn"
+  colorType="white"
+  type="submit"
+>
+  white world
+</button>
+`;
+
+exports[`Storyshots Atom/Inputbox Number Input 1`] = `
+<input
+  className="form-control"
+  type="number"
+  value="1"
+/>
+`;
+
+exports[`Storyshots Atom/Inputbox Text Input 1`] = `
+<input
+  className="form-control"
+  type="text"
+  value=""
+/>
+`;
+
+exports[`Storyshots Atom/TodoItem Default 1`] = `
+<div
+  className="css-j54efu list-group-item"
+  id="hello"
+  onClick={[Function]}
+>
+  Thu Sep 03 2020 00:00:00 GMT+0900 (대한민국 표준시):  hello
+</div>
+`;
+
 exports[`Storyshots Example/Button Large 1`] = `
 <button
   className="storybook-button storybook-button--large storybook-button--secondary"
@@ -470,6 +516,63 @@ exports[`Storyshots Example/Page Logged Out 1`] = `
     </div>
   </section>
 </article>
+`;
+
+exports[`Storyshots Organisms/TodoListProviderWithState Default 1`] = `
+<div
+  style={
+    Object {
+      "padding": "3rem",
+    }
+  }
+>
+  <div
+    className="list-group"
+    data-testid="todolist"
+    onKeyDown={[Function]}
+  >
+    <div
+      className="css-j54efu list-group-item"
+      data-rr-ui-event-key={null}
+      id="잠자기"
+      onClick={[Function]}
+    >
+      Wed Mar 03 2021 00:00:00 GMT+0900 (대한민국 표준시):  잠자기
+    </div>
+    <div
+      className="css-j54efu list-group-item"
+      data-rr-ui-event-key={null}
+      id="밥먹기"
+      onClick={[Function]}
+    >
+      Mon Apr 04 2022 00:00:00 GMT+0900 (대한민국 표준시):  밥먹기
+    </div>
+    <div
+      className="css-j54efu list-group-item"
+      data-rr-ui-event-key={null}
+      id="코풀기"
+      onClick={[Function]}
+    >
+      Thu Apr 07 2022 00:00:00 GMT+0900 (대한민국 표준시):  코풀기
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Organisms/TodoListProviderWithState Empty 1`] = `
+<div
+  style={
+    Object {
+      "padding": "3rem",
+    }
+  }
+>
+  <div
+    className="list-group"
+    data-testid="todolist"
+    onKeyDown={[Function]}
+  />
+</div>
 `;
 
 exports[`Storyshots Task Archived 1`] = `

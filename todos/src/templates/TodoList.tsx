@@ -11,7 +11,7 @@ const TodoList = (): JSX.Element => {
         number of Todos:
         {todosValue.length}
       </span>
-      <TodoListProvider todosValue={todosValue} />
+      <TodoListProvider />
     </div>
   );
 };

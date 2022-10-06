@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 export interface ButtonProps extends React.ComponentProps<"button"> {
   colorType?: "blue" | "white";
   type: "button" | "submit";
+  onClick?: () => void;
 }
 const Buton = ({ children, colorType, type, ...props }: ButtonProps) => {
   return (

@@ -4,14 +4,14 @@ import styled from "@emotion/styled";
 
 export interface TodoItemProps {
   todo: Todo;
-  handleItemClick: (
+  onHandleItemClick: (
     event: React.MouseEvent & { target: HTMLButtonElement }
   ) => void;
 }
 
-const TodoItem = ({ todo, handleItemClick }: TodoItemProps): JSX.Element => {
+const TodoItem = ({ todo, onHandleItemClick }: TodoItemProps): JSX.Element => {
   return (
-    <StyledListItem id={todo.id + ""} onClick={handleItemClick}>
+    <StyledListItem id={todo.text} onClick={onHandleItemClick}>
       {todo.id + ":  " + todo.text}
     </StyledListItem>
   );

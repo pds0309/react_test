@@ -1,18 +1,34 @@
+import { useEffect, useState } from "react";
+import { useQuery, useQueryClient } from "react-query";
+
 import { Post } from "../Models/type";
 import PostDetail from "./PostDetail";
-import { useQuery } from "react-query";
-import { useState } from "react";
 
-const fetchPosts = async () => {
+const fetchPosts = async (pageNum: number) => {
   const response = await fetch(
-    "https://jsonplaceholder.typicode.com/posts?_limit=10&_page=0"
+    `https://jsonplaceholder.typicode.com/posts?_limit=10&_page=${pageNum}`
   );
   return response.json();
 };
 
 const Posts = (): JSX.Element => {
-  const { data, isLoading, isError } = useQuery<Post[]>("posts", fetchPosts);
+  const queryClient = useQueryClient();
+  const [currentPage, setCurrentPage] = useState<number>(0);
+  const { data, isLoading, isError } = useQuery<Post[]>(
+    ["posts", currentPage],
+    () => fetchPosts(currentPage),
+    { keepPreviousData: true } // 쿼리 키가 변경되어서 새로운 데이터를 요청하는 동안에도 마지막 data값을 유지한다.
+  );
   const [selectedPage, setSelectedPage] = useState<Post>();
+
+  useEffect(() => {
+    if (currentPage < 10) {
+      const nextPage = currentPage + 1;
+      queryClient.prefetchQuery(["posts", nextPage], () =>
+        fetchPosts(nextPage)
+      );
+    }
+  }, [currentPage, queryClient]);
 
   const handlePostClick = (post: Post) => {
     setSelectedPage(post);
@@ -40,6 +56,20 @@ const Posts = (): JSX.Element => {
           ))}
         </ul>
         <br />
+        <div className="page">
+          <button
+            disabled={currentPage <= 1}
+            onClick={() => setCurrentPage(currentPage - 1)}
+          >
+            prev
+          </button>
+          <button
+            disabled={currentPage >= 10}
+            onClick={() => setCurrentPage(currentPage + 1)}
+          >
+            next
+          </button>
+        </div>
       </div>
       <div>
         <h2>상세</h2>

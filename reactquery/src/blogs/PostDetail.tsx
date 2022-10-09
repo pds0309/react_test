@@ -31,7 +31,8 @@ const updatePost = async (postId: string, title: string) => {
 const PostDetail = ({ post }: { post: Post }) => {
   const { data, isLoading, isError, error } = useQuery<Comment[], any>(
     ["comments", post.id],
-    () => fetchComments(post.id)
+    () => fetchComments(post.id),
+    { staleTime: 10000 }
   );
 
   if (isLoading) {

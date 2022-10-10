@@ -10,3 +10,9 @@ export interface Comment {
   email?: string;
   body: string;
 }
+
+export interface People {
+  name: string;
+  hairColor: string;
+  eyeColor: string;
+}

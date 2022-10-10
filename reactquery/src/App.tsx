@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider } from "react-query";
 
 import Blog from "./blogs/Blog";
+import InfinitePeople from "./infinitescrolls/InfinitePeople";
 import React from "react";
 import { ReactQueryDevtools } from "react-query/devtools";
 
@@ -10,7 +11,8 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="App">
-        <Blog></Blog>
+        {/* <Blog /> */}
+        <InfinitePeople />
       </div>
       <ReactQueryDevtools />
     </QueryClientProvider>

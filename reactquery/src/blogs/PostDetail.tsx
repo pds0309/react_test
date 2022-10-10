@@ -1,6 +1,7 @@
+import { useMutation, useQuery } from "react-query";
+
 import { Comment } from "../Models/type";
 import { Post } from "../Models/type";
-import { useQuery } from "react-query";
 
 const deletePost = async (postId: string) => {
   const response = await fetch(
@@ -35,6 +36,8 @@ const PostDetail = ({ post }: { post: Post }) => {
     { staleTime: 10000 }
   );
 
+  const deleteMutation = useMutation((postId: string) => deletePost(postId));
+
   if (isLoading) {
     return <div>...loading</div>;
   }
@@ -45,7 +48,14 @@ const PostDetail = ({ post }: { post: Post }) => {
   return (
     <>
       <h3 style={{ color: "blue" }}>{post.title}</h3>
-      <button>Delete</button>
+      <button onClick={() => deleteMutation.mutate(post.id)}>Delete</button>
+      {deleteMutation.isError && <p style={{ color: "red" }}>ERROR!!</p>}
+      {deleteMutation.isLoading && (
+        <p style={{ color: "yellow" }}>...loading</p>
+      )}
+      {deleteMutation.isSuccess && (
+        <p style={{ color: "green" }}>DELETE SUCCESS!!!</p>
+      )}
       <button>Update title</button>
       <p>{post.body}</p>
       <h4>Comments</h4>

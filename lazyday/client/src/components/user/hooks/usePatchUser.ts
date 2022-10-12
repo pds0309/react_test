@@ -1,6 +1,8 @@
 import { useCustomToast } from 'components/app/hooks/useCustomToast';
 import jsonpatch from 'fast-json-patch';
 import { UseMutateFunction, useMutation } from 'react-query';
+import { queryKeys } from 'react-query/constants';
+import { queryClient } from 'react-query/queryClient';
 
 import type { User } from '../../../../../shared/types';
 import { axiosInstance, getJWTHeader } from '../../../axiosInstance';
@@ -36,14 +38,38 @@ export function usePatchUser(): UseMutateFunction<
   const { mutate: patchUser } = useMutation(
     (newUserData: User) => patchUserOnServer(newUserData, user),
     {
+      // onMutate 는 onError 핸들러로 전달될 context를 반환한다.
+      onMutate: async (newData: User | null) => {
+        // cancel any outgoing queries for user Data,
+        // so old server cache data doesn't overwrite our optimistic update
+        queryClient.cancelQueries(queryKeys.user);
+        // 이전 데이터 스냅샷
+        const previousUserData: User = queryClient.getQueryData(queryKeys.user);
+        // 낙관적 업데이트로 캐시 업데이트
+        updateUser(newData);
+        // 컨텍스트(이전데이터) 반환
+        return { previousUserData };
+      },
+      onError: (error, newData, context) => {
+        if (context.previousUserData) {
+          updateUser(context.previousUserData);
+          toast({
+            title: 'User Update failed!!',
+            status: 'error',
+          });
+        }
+        // rollback
+      },
       onSuccess: (userData: User | null) => {
         if (user) {
-          updateUser(userData);
           toast({
             title: 'User Updated',
             status: 'success',
           });
         }
+      },
+      onSettled: () => {
+        // queryClient.invalidateQueries(queryKeys.user);
       },
     },
   );

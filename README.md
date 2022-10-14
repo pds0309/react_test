@@ -83,6 +83,38 @@ TODO
 - storybook 활용해보기
 
 
+<br>
+
+### Section4
+
+[readme](/reactquery/README.md)
+
+**React Query 연습**
+
+- 기본적인 react query 사용 연습하기
+
+- `useQuery`, `useMutation`, `useInfiniteQuery`
+
 
 <br>
-<br>
+
+### Section5
+
+[readme](/lazyday/README.md)
+
+**만들어진 앱에 React Query 도입하기**
+
+- react query를 앱 컴포넌트에 직접 사용하지 않고 분리, 집중화하여 사용하기
+
+- prefetch, refetch, authentication 적용해보기
+
+- mutation 취소, 낙관적 업데이트 적용해보기
+
+- react query가 포함된 컴포넌트 테스트하기
+
+**ref**
+
+- [ref repo]()
+
+- [udemy - react query](https://www.udemy.com/course/react-query-react)
+

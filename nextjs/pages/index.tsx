@@ -1,8 +1,17 @@
+import Head from "next/head";
 import { Meetup } from "../Models/types";
 import MeetupList from "../components/meetups/MeetupList";
 
 const Home = ({ meetups }: { meetups: Meetup[] }) => {
-  return <MeetupList meetups={meetups}></MeetupList>;
+  return (
+    <>
+      <Head>
+        <title>제목</title>
+        <meta name="name" content="contents contents" />
+      </Head>
+      <MeetupList meetups={meetups}></MeetupList>
+    </>
+  );
 };
 
 export async function getStaticProps() {

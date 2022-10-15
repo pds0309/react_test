@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-
 import { Meetup } from "../Models/types";
 import MeetupList from "../components/meetups/MeetupList";
 
@@ -22,14 +20,18 @@ const DUMMY_MEETUPS: Meetup[] = [
   },
 ];
 
-const Home = () => {
-  const [loadedMeetups, setLoadedMeetups] = useState<Meetup[]>([]);
-
-  useEffect(() => {
-    //fetch
-    setLoadedMeetups(DUMMY_MEETUPS);
-  }, []);
-  return <MeetupList meetups={loadedMeetups}></MeetupList>;
+const Home = ({ meetups }: { meetups: Meetup[] }) => {
+  return <MeetupList meetups={meetups}></MeetupList>;
 };
+
+export async function getStaticProps() {
+  // TODO: fetch real api data
+
+  return {
+    props: {
+      meetups: DUMMY_MEETUPS,
+    },
+  };
+}
 
 export default Home;

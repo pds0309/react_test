@@ -118,3 +118,36 @@ TODO
 
 - [udemy - react query](https://www.udemy.com/course/react-query-react)
 
+<br>
+
+
+### Section6
+
+[readme](/nextjs/README.md)
+
+**Next.js로 만남 기록 앱 만들기**
+
+- 간단한 만남 기록 목록 조회, 상세보기, 추가 기능 있는 앱을 next.js로 구현
+
+<br>
+
+**주요연습사항**
+
+- nextjs로 라우트 설정하고 컴포넌트 렌더링 시키기
+
+- 서버 데이터에 대한 pre-rendering 적용으로 ssr 구현
+
+<br>
+
+**todo**
+
+- [ ] jest, testing-library 로 컴포넌트 테스트 적용해보기
+- [ ] cypress로 e2e 테스트 적용해보기
+
+<br>
+
+
+**ref**
+
+- [nextjs docs](https://nextjs.org/docs)
+- [udemy - best react](https://www.udemy.com/course/best-react) 

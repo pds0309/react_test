@@ -17,7 +17,6 @@ function NewMeetupForm({ onAddMeetup }: MeetupFormProps) {
     };
 
     const meetup: Meetup = {
-      id: "m3",
       title: target.title.value,
       image: target.image.value,
       address: target.address.value,
